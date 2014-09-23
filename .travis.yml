@@ -13,6 +13,5 @@ before_script:
 script:
 - grunt all
 after_success:
-- grunt submit.coverage
 - chmod +x ./deploy-ghpages.sh
 - "./deploy-ghpages.sh"
