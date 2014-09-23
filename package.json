@@ -1,0 +1,31 @@
+{
+  "name": "angular-seed",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "dependencies": {},
+  "devDependencies": {
+    "jshint-stylish": "^0.2.0",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-requirejs": "^0.2.2",
+    "protractor": "^0.23.1",
+    "querystring": "^0.2.0",
+    "requirejs": "^2.1.11",
+    "yargs": "^1.2.2",
+    "node-static": "^0.7.5",
+    "grunt": "^0.4.5",
+    "grunt-karma": "^0.9.0",
+    "grunt-protractor-runner": "^1.1.4",
+    "karma-threshold-reporter": "^0.1.9",
+    "karma-coverage": "^0.2.6",
+    "grunt-coveralls": "^1.0.0",
+    "grunt-shell": "^1.1.1",
+    "grunt-jslint": "^1.1.12",
+    "cucumber": "^0.4.4",
+    "should": "^4.0.4"
+  },
+  "scripts": {},
+  "author": "",
+  "license": ""
+}
