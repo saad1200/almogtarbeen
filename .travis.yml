@@ -16,6 +16,3 @@ after_success:
 - grunt submit.coverage
 - chmod +x ./deploy-ghpages.sh
 - "./deploy-ghpages.sh"
-env:
-  global:
-    secure: HAEIYUKhwQ/e51MdHjhn/Z6AlbzTXRNVXyZyZPeHNkdpb1epMM+a3PvuEQv4mwC7p8aMx0IjCSW2cMWustugMq93HxowipavRI2VUfmA/G5iF8MixbiexZpo2/TR98BZ0FYBFPSidrKUvfRyMSxe6RTX9LmU8ePmZgc6fjfUrWQ=
