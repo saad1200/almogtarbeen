@@ -37,7 +37,7 @@
     function articlesService($http){
         
         this.getAll = function(){
-            return $http.get('http://www.almogtarbeen.com/articles/getLatest/0');
+            return $http.get('http://www.almogtarbeen.com/articles/getArticles?size=10');
         }
     }
     
