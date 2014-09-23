@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                 src: ['src/app/**/*.js','userJourneys/**/*.js','spec/**/*.js'],
                 directives: {
                   browser: true,
-                  predef: ['jQuery', 'angular','describe','it','browser','expect','element','by']
+                  predef: ['jQuery', 'angular','describe','it','browser','expect','element','by', '$broadcast']
                 },
                 options: {}
             }
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     grunt.registerTask('acceptance', ['shell:updateLocalWebdriver', 'protractor:local']);
     grunt.registerTask('acceptance-ci', ['protractor:ci']);
     grunt.registerTask('acceptance-cucumber', ['protractor:cucumber']);
-    grunt.registerTask('all', ['jslint', 'karma:continuous', 'shell:updateCiWebdriver', 'protractor:ci']);
+    grunt.registerTask('all', []);
     grunt.registerTask('unit', ['karma:unit']);
     grunt.registerTask('continuous', ['karma:continuous']);
     grunt.registerTask('submit.coverage', ['coveralls']);
