@@ -1,39 +1,20 @@
-<section data-ng-controller="portal as vm">
+<section data-ng-controller="portal as vm" >
     
     <div class="row-fluid">
         <div class="categoryListingTitle">
 <!--            <p>@Html.ActionLink(Model.Categories[categoryId], "Index", new { id = 1, cid = categoryId })</p>-->
         </div>
         
-        <ul class="thumbs">
-
-            @foreach (var article in Model.ArticlesPerCategory[categoryId])
-            {
-                if (article.Pictures != null && article.Pictures.Count > 0 && !string.IsNullOrEmpty(article.Pictures.First()))
-                    {
-                        <li class="col-md-4">
-                            <div class="thumbnail">
-                                <img style="max-height: 200px" src="@article.Pictures.First()" alt="@article.Title" />
-                                <div class="caption">
-                                    <h3 class="text-center" >@Html.ActionLink(article.GetFormatedTitle(), "Show", new {id = article.Id})</h3>
-                                    <p>@article.Summary</p>
-                                </div>
-                            </div>
-                        </li>
-                    }
-            }
-
-        </ul>
-        <div class='article' data-ng-repeat='article in vm.articles'>
+        <ul  class='thumbs article' data-ng-repeat='article in vm.articles' data-ng-show='vm.articles.length > 0'>
             <li class="col-md-4">
                 <div class="thumbnail">
-                    <img style="max-height: 200px" src="{article.Picture}" alt="{article.title}" />
+                    <img style="max-height: 200px" data-ng-src="{{article.pictures}}" alt="{{article.title}}" />
                     <div class="caption">
-                        <h3 class="text-center">{article.titleLink}</h3>
-                        <p>{article.description}</p>
+                        <h3 class="text-center"><a href="#/article/{{article.id}}" >{{article.formattedTitle}}</a></h3>
+                        <p>{{article.content}}</p>
                     </div>
                 </div>
             </li>
-        </div>
+        </ul>
     </div>
 </section>

@@ -3,7 +3,8 @@
 
     function getRoutes() {
         return [
-            { url: '/', config: {templateUrl: 'app/portal/portal.html'} }
+            { url: '/', config: {templateUrl: 'app/portal/portal.html'} },
+            { url: '/article/:id', config: {templateUrl: 'app/article/article.html'} },
         ];
     }
 

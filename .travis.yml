@@ -17,4 +17,4 @@ after_success:
 - "./deploy-ghpages.sh"
 env:
   global:
-    secure: HAEIYUKhwQ/e51MdHjhn/Z6AlbzTXRNVXyZyZPeHNkdpb1epMM+a3PvuEQv4mwC7p8aMx0IjCSW2cMWustugMq93HxowipavRI2VUfmA/G5iF8MixbiexZpo2/TR98BZ0FYBFPSidrKUvfRyMSxe6RTX9LmU8ePmZgc6fjfUrWQ=
+    secure: hyDT3LnMBLFyWxBhOgmL0jpSEKVggNC/10PpVb3ANa3QhSCHD5m6pzabobXVHaamHcKM3yTXVDTnmoUW2jHhR5mwFi1CmL0ul9iqLA7TjHBwk6y0pLA/29TgKcWQHopggk4uHumvTwiSkyATQbHUBbGKWuXNP7xgr2JZetEnv0g=

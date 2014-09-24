@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "toastr": "~2.0.3",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "bootstrap": "~3.2.0",
+    "angular-sanitize": "~1.2.25"
   }
 }

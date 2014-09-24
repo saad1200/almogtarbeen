@@ -5,6 +5,7 @@
 
     angular.module('app', [
         'ngRoute',
+        'ngSanitize',
         'common'
     ]);
 }());
