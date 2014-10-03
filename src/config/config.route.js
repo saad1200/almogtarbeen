@@ -1,22 +1,42 @@
 (function () {
     'use strict';
 
-    function getRoutes() {
-        return [
-            { url: '/', config: {templateUrl: 'app/portal/portal.html'} },
-            { url: '/article/:id', config: {templateUrl: 'app/article/article.html'} },
-        ];
+    var app = angular.module('app');
+
+    // Collect the routes
+    app.constant('routes', getRoutes());
+
+    // Configure the routes and route resolvers
+    app
+        .config(['$routeProvider', 'routes', '$httpProvider', routeConfigurator])
+        .run(['$location', '$route', run]);
+
+    function run($location, $route) {
     }
 
-    function routeConfigurator($routeProvider, routes) {
-
+    function routeConfigurator($routeProvider, routes, $httpProvider) {
         routes.forEach(function (r) { $routeProvider.when(r.url, r.config); });
         $routeProvider.otherwise({ redirectTo: '/' });
     }
 
-    angular.module('app')
-        .constant('routes', getRoutes())
-        .config(['$routeProvider', 'routes', routeConfigurator])
-        .run();
-
-}());
+    // Define the routes 
+    function getRoutes() {
+        return [
+            {
+                url: '/',
+                config: {
+                    templateUrl: 'app/portal/portal.html',
+                    title: 'portal',
+                    settings: {}
+                }
+            }, {
+                url: '/article/:id',
+                config: {
+                    title: 'search',
+                    templateUrl: 'app/article/article.html',
+                    settings: {}
+                }
+            }
+        ];
+    }
+})();

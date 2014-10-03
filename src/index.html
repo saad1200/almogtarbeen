@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html id="ng-app" data-ng-app="app">
   <head>
-      <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-      <link href="bower_components/toastr/toastr.css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Almogtarbeen</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="bower_components/toastr/toastr.css" rel="stylesheet" />
+        <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+      
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400"/>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans"/>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster"/>
+        <link rel="stylesheet" href="prettyPhoto/css/prettyPhoto.css" />
+        <link rel="stylesheet" href="css/flexslider.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="http://www.almogtarbeen.com/combres.axd/siteCss/-2145685977/" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
    </head>
-  <body>
-
-      <div data-ng-view></div>
+  <body style="direction:rtl">
+      
+    <div class="container-fluid"> 
+        <div class="col-md-1 visible-lg visible-md"></div>
+        <div class="content row col-md-10 col-sm-12">
+              <div data-ng-include="'app/layout/header.html'"></div>
+              <div data-ng-include="'app/layout/shell.html'"></div>
+              <div data-ng-include="'app/layout/footer.html'"></div>
+        </div>
+        <div class="col-md-1 visible-lg visible-md"></div>
+    </div>
       
       <script src="bower_components/angular/angular.min.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
@@ -18,8 +53,10 @@
       <!-- Bootstrapping -->
       <script type="text/javascript" src="app/app.js"></script>
       <script type="text/javascript" src="config/config.route.js"></script>
+      <script type="text/javascript" src="config/config.js"></script>
       <script type="text/javascript" src="common/common.js"></script>
       <script type="text/javascript" src="common/logger.js"></script>
+      <script type="text/javascript" src="app/layout/shell.js"></script>
       
       <!-- app -->
       <script type="text/javascript" src="app/portal/portal.js"></script>
