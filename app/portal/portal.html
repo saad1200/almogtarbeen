@@ -1,18 +1,83 @@
 <section class="col-md-9" id="content" data-ng-controller="portal as vm" >
-    <div class="row">
-        <div class="thumbs">
-            <div class="col-md-3" style="height:350px;" data-ng-repeat='article in vm.articles'>
-                <div class="thumbnail">
-                    <img style="max-height:100px" class="img-responsive" data-ng-src="{{article.pictures}}" alt="{{article.title}}" />
-                    <div class="caption">
-                        <h4 class="text-center" ><a href="#/article/{{article.id}}">{{article.title}}</a></h3>
-                        <p>{{article.content}}</p>
-                    </div>
-                </div>
-            </div>
+
+<!--<div style="width:500px">-->
+
+<div class="cycle-slideshow" >
+    
+    <a 
+       href="#/article/{{article.id}}" 
+       data-cycle-background="{{article.pictures}}"
+       data-cycle-caption1="{{article.title}}" 
+       data-ng-repeat='article in vm.articles'>
+    </a>
+<!--
+    <div class="prev"></div>
+    <div class="next"></div>
+-->
+    <div class="cycle-overlay"></div>
+    <div class="cycle-caption"></div>
+    <div class="cycle-pager"></div>
+    <div class="matrix"></div>
+    <div id="progress"></div>
+</div>
+<div class="shadow"></div>
+<div id=adv-custom-pager class="center external"></div>
+
+<!--
+    <script>
+            $('.cycle-slideshow').on('cycle-before', function (opts) {
+                var slideshow = $(this);
+                var img = slideshow.find('.banner-background').css('background-image');
+                slideshow.css('background-image', img);
+            });
+
+            var progress = $('#progress'),
+                slideshow = $( '.cycle-slideshow' );
+
+            slideshow.on( 'cycle-initialized cycle-before', function( e, opts ) {
+                progress.stop(true).css( 'width', 0 );
+            });
+
+            slideshow.on( 'cycle-initialized cycle-after', function( e, opts ) {
+                if ( ! slideshow.is('.cycle-paused') )
+                    progress.animate({ width: '100%' }, opts.timeout, 'linear' );
+            });
+
+            slideshow.on( 'cycle-paused', function( e, opts ) {
+               progress.stop(); 
+            });
+
+            slideshow.on( 'cycle-resumed', function( e, opts, timeoutRemaining ) {
+                progress.animate({ width: '100%' }, timeoutRemaining, 'linear' );
+            });
+    </script>
+-->
+<!--
+    <div id="slideshow" class="sideshow cycle-slideshow" 
+        data-cycle-before='<div id="nav">'
+        data-cycle-slideResize="tileSlide"
+        data-cycle-fx="tileSlide"
+        data-cycle-pager="#no-template-pager"
+        data-cycle-timeout="2000"
+        data-cycle-pager-template=""
+        data-cycle-carousel-visible="5"
+        data-cycle-carousel-fluid=true
+        data-cycle-slides="> div"
+    >
+
+        <div data-ng-repeat='article in vm.articles'>
+            <img data-ng-src="{{article.pictures}}" />
+            <div class="cycle-overlay">{{article.title}}</div>
         </div>
     </div>
     
+    <div id=no-template-pager class="cycle-pager external">
+        <img data-ng-src="{{article.pictures}}"width=20 height=20 data-ng-repeat='article in vm.articles'>
+    </div>
+-->
+
+<!--</div>-->
+
 <!--
     <div class="panel">
         <div class="panel-body">
@@ -134,3 +199,48 @@
             <!--/panel-body-->
     <!--/end right column-->
 </section>
+
+<script>
+//$(function() {
+//	
+//
+//
+//// ---------------------------------------------------
+//// Slideshow 2
+//
+//    $('#slideshow_2').cycle({
+//        fx: 'fade',		
+//		speed:  900, 
+//		timeout: 5000, 
+//		pager: '.ss2_wrapper .slideshow_paging', 
+//        prev: '.ss2_wrapper .slideshow_prev',
+//        next: '.ss2_wrapper .slideshow_next',
+//		before: function(currSlideElement, nextSlideElement) {
+//			var data = $('.data', $(nextSlideElement)).html();
+//			$('.ss2_wrapper .slideshow_box').stop(true, true).animate({ bottom:'-110px'}, 400, function(){
+//				$('.ss2_wrapper .slideshow_box .data').html(data);
+//			});
+//			$('.ss2_wrapper .slideshow_box').delay(100).animate({ bottom:'0'}, 400);
+//		}
+//    });
+//
+//	$('.ss2_wrapper').mouseenter(function(){
+//		$('#slideshow_2').cycle('pause');
+//		$('.ss2_wrapper .slideshow_prev').stop(true, true).animate({ left:'20px'}, 200);
+//		$('.ss2_wrapper .slideshow_next').stop(true, true).animate({ right:'20px'}, 200);
+//    }).mouseleave(function(){
+//		$('#slideshow_2').cycle('resume');
+//		$('.ss2_wrapper .slideshow_prev').stop(true, true).animate({ left:'-40px'}, 200);
+//		$('.ss2_wrapper .slideshow_next').stop(true, true).animate({ right:'-40px'}, 200);
+//    });
+//	
+//	
+//	
+//// ---------------------------------------------------
+//	
+//	$('a[href="#"]').click(function(event){ 
+//		event.preventDefault(); // for this demo disable all links that point to "#"
+//	});
+//	
+//});
+</script>
