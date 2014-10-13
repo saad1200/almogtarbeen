@@ -1,6 +1,4 @@
-<section class="col-md-9" id="content" data-ng-controller="portal as vm" >
-
-<!--<div style="width:500px">-->
+<section class="col-md-6" id="content" data-ng-controller="portal as vm" >
 
 <div class="cycle-slideshow" >
     
@@ -10,10 +8,6 @@
        data-cycle-caption1="{{article.title}}" 
        data-ng-repeat='article in vm.articles'>
     </a>
-<!--
-    <div class="prev"></div>
-    <div class="next"></div>
--->
     <div class="cycle-overlay"></div>
     <div class="cycle-caption"></div>
     <div class="cycle-pager"></div>
@@ -22,61 +16,6 @@
 </div>
 <div class="shadow"></div>
 <div id=adv-custom-pager class="center external"></div>
-
-<!--
-    <script>
-            $('.cycle-slideshow').on('cycle-before', function (opts) {
-                var slideshow = $(this);
-                var img = slideshow.find('.banner-background').css('background-image');
-                slideshow.css('background-image', img);
-            });
-
-            var progress = $('#progress'),
-                slideshow = $( '.cycle-slideshow' );
-
-            slideshow.on( 'cycle-initialized cycle-before', function( e, opts ) {
-                progress.stop(true).css( 'width', 0 );
-            });
-
-            slideshow.on( 'cycle-initialized cycle-after', function( e, opts ) {
-                if ( ! slideshow.is('.cycle-paused') )
-                    progress.animate({ width: '100%' }, opts.timeout, 'linear' );
-            });
-
-            slideshow.on( 'cycle-paused', function( e, opts ) {
-               progress.stop(); 
-            });
-
-            slideshow.on( 'cycle-resumed', function( e, opts, timeoutRemaining ) {
-                progress.animate({ width: '100%' }, timeoutRemaining, 'linear' );
-            });
-    </script>
--->
-<!--
-    <div id="slideshow" class="sideshow cycle-slideshow" 
-        data-cycle-before='<div id="nav">'
-        data-cycle-slideResize="tileSlide"
-        data-cycle-fx="tileSlide"
-        data-cycle-pager="#no-template-pager"
-        data-cycle-timeout="2000"
-        data-cycle-pager-template=""
-        data-cycle-carousel-visible="5"
-        data-cycle-carousel-fluid=true
-        data-cycle-slides="> div"
-    >
-
-        <div data-ng-repeat='article in vm.articles'>
-            <img data-ng-src="{{article.pictures}}" />
-            <div class="cycle-overlay">{{article.title}}</div>
-        </div>
-    </div>
-    
-    <div id=no-template-pager class="cycle-pager external">
-        <img data-ng-src="{{article.pictures}}"width=20 height=20 data-ng-repeat='article in vm.articles'>
-    </div>
--->
-
-<!--</div>-->
 
 <!--
     <div class="panel">
