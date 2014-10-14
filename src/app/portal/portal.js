@@ -160,7 +160,7 @@
                 captionTemplate:"<span class=caption1>{{caption1}}</span>",
                 easing:"easeOutBack",
                 pager:"#adv-custom-pager",
-                pagerTemplate:"<a href='#'><img src='{{background}}' width='40' height='40'></a>"
+                pagerTemplate:"<a href='#'><img src='{{background}}' width='40' height='40' class='col-md-1 thumbnail'></a>"
             });
         });
         }
