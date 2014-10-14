@@ -1,13 +1,9 @@
-<div class="col-md-3">
+<div class="col-md-3" data-ng-controller="leftSidebar as vm">
     <div class="panel" id="midCol">
         <div class="panel-body">
 
             <div class="well">
-                <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
-                <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Max Axleton</a></h5>
-                <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Devin Skelly</a></h5>
-                <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Katie Kowalski</a></h5>
-                <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Amet Deberge</a></h5>
+                <h5 data-ng-repeat="writer in vm.writers"><a href="#"><i class="glyphicon glyphicon-user"></i> {{writer}}</a></h5>
             </div>
 
             <hr>
