@@ -17,28 +17,28 @@
 <div class="shadow"></div>
 <div id="adv-custom-pager" class="center external"></div>
 
-<!--
+
     <div class="panel">
         <div class="panel-body">
 
         <div class="row">
           <div class="col-md-8">
-            <a href="#/article/{{vm.articles[0].id}}"><img data-ng-src="{{vm.articles[0].pictures}}" alt="{{vm.articles[0].title}}" class="img-responsive"/></a>
+            <a href="#/article/{{vm.articlesList[0].id}}"><img data-ng-src="{{vm.articlesList[0].pictures}}" alt="{{vm.articlesList[0].title}}" class="img-responsive"/></a>
             <h2>{{vm.articles[0].title}}</h2>
             {{vm.articles[0].content}}
-          </div> 
+          </div>
           <div class="col col-sm-4">
-            <a href="#/article/{{vm.articles[1].id}}"><img data-ng-src="{{vm.articles[1].pictures}}" alt="{{vm.articles[1].title}}" class="img-responsive"/></a>
+            <a href="#/article/{{vm.articlesList[1].id}}"><img data-ng-src="{{vm.articlesList[1].pictures}}" alt="{{vm.articlesList[1].title}}" class="img-responsive"/></a>
             <h4>{{vm.articles[1].title}}</h4>
             <hr>
-            <a href="#/article/{{vm.articles[2].id}}"><img data-ng-src="{{vm.articles[2].pictures}}" alt="{{vm.articles[2].title}}" class="img-responsive"/></a>
+            <a href="#/article/{{vm.articlesList[2].id}}"><img data-ng-src="{{vm.articlesList[2].pictures}}" alt="{{vm.articlesList[2].title}}" class="img-responsive"/></a>
             <h4>{{vm.articles[2].title}}</h4>
-          </div>   
+          </div>
         </div>
     <hr />
     <div class="panel-body">
 
-      <div class="well text-center"> 
+      <div class="well text-center">
         <h2>{{vm.articles[3].title}}</h2>
         {{vm.articles[3].content}}
         <br><br>
@@ -56,47 +56,14 @@
             <div class="col-md-6">
               <img data-ng-src="{{vm.articles[$index].pictures}}" alt="{{vm.articles[$index].title}}" class="img-responsive"/>
 
-            </div> 
+            </div>
             <div class="col-md-6">
               <h3>{{vm.articles[$index].title}}</h3>
                 {{vm.articles[$index].content}}
-            </div>   
+            </div>
             </div>
 
         </span>
-      <hr>
-
-      <h2>Responsive Text</h2>
-      Have you ever seen large text blocks overflow their container, or get cut-off? One way to handle this is to ensure
-      the text content wraps inside the container. But the more "responsive" way is to scale font-sizes accordingly as the size of the viewing area
-      (viewport) changes. Creators of <a href="http://fittextjs.com/">FitText</a> have mastered this in the form of a plugin.
-
-      <hr>
-
-
-      <div class="well"> 
-        <h1>Well..</h1>
-        Does anyone know why <a href="#">@mdo</a> or <a href="#">@fat</a> would name this element a "well"?
-      </div>
-
-      <hr>
-
-      <h2>Responsive Images</h2>
-      The sizing "grid" is not the only aspect of responsive design. Making images and media object scale correctly is another consideration for responsive developers.
-      <span class="hidden-sm">Go ahead and shrink your browser's width to see how the HTML elements and images respond as the width of the viewport changes.</span>
-
-      <h1><a href="#"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a></h1>
-
-      <hr>
-
-      Bootstrap 3 is the latest "Mobile-first" release of the Bootstrap framework that offers a starter foundation for Web designers and developers.
-      Bootstrap consists of a CSS and JavaScript library. To use Bootstrap, you simply include (reference) in the HTML of your Web page. There is also a CDN for 
-      Bootstrap that serves pages faster.
-
-      <hr>
-
-      This theme was made at Bootply. Bootply is a HTML, JavaScript and CSS editor app built just for Bootstrap. Bootply enables developers to easily apply the Bootstrap Framework to their projects using a beautiful hand-coding interface. The browser-based Bootply editor lets developers select and paste Bootstrap friendly code snippets. Bootply can be used to test, manage and share any Bootstrap code, from small snippets to entire Bootstrap-ready themes. Find it at http://bootply.com
-
       <hr>
 
       <div class="row">
@@ -134,52 +101,7 @@
       <hr>
 
       </div>
--->
+
             <!--/panel-body-->
     <!--/end right column-->
 </section>
-
-<script>
-//$(function() {
-//	
-//
-//
-//// ---------------------------------------------------
-//// Slideshow 2
-//
-//    $('#slideshow_2').cycle({
-//        fx: 'fade',		
-//		speed:  900, 
-//		timeout: 5000, 
-//		pager: '.ss2_wrapper .slideshow_paging', 
-//        prev: '.ss2_wrapper .slideshow_prev',
-//        next: '.ss2_wrapper .slideshow_next',
-//		before: function(currSlideElement, nextSlideElement) {
-//			var data = $('.data', $(nextSlideElement)).html();
-//			$('.ss2_wrapper .slideshow_box').stop(true, true).animate({ bottom:'-110px'}, 400, function(){
-//				$('.ss2_wrapper .slideshow_box .data').html(data);
-//			});
-//			$('.ss2_wrapper .slideshow_box').delay(100).animate({ bottom:'0'}, 400);
-//		}
-//    });
-//
-//	$('.ss2_wrapper').mouseenter(function(){
-//		$('#slideshow_2').cycle('pause');
-//		$('.ss2_wrapper .slideshow_prev').stop(true, true).animate({ left:'20px'}, 200);
-//		$('.ss2_wrapper .slideshow_next').stop(true, true).animate({ right:'20px'}, 200);
-//    }).mouseleave(function(){
-//		$('#slideshow_2').cycle('resume');
-//		$('.ss2_wrapper .slideshow_prev').stop(true, true).animate({ left:'-40px'}, 200);
-//		$('.ss2_wrapper .slideshow_next').stop(true, true).animate({ right:'-40px'}, 200);
-//    });
-//	
-//	
-//	
-//// ---------------------------------------------------
-//	
-//	$('a[href="#"]').click(function(event){ 
-//		event.preventDefault(); // for this demo disable all links that point to "#"
-//	});
-//	
-//});
-</script>

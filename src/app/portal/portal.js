@@ -10,6 +10,7 @@
 
         var vm = this;
         vm.articles = [];
+        vm.articlesList = [];
         vm.slids = [];
         vm.categories = [];
         vm.pictures = ['http://malsup.github.com/images/beach1.jpg']
@@ -36,6 +37,7 @@
                 preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
                         vm.articles = result.data.slice(0,12);
+                        vm.articlesList = result.data.slice(24,30);
                         galleryView.refresh();
                 });
                 
