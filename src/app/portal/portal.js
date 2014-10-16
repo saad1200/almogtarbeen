@@ -2,9 +2,9 @@
     'use strict';
     
     var controllerId = 'portal';
-    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'galleryView', 'preloaderImageService.js', portal]);
+    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'galleryView', 'preloaderImageService', portal]);
 
-    function portal(common, articlesService, categoriesService, galleryView, preloader) {
+    function portal(common, articlesService, categoriesService, galleryView, preloaderImageService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
@@ -33,7 +33,7 @@
                 for(var index in result.data)
                     imagesToPreload.push(result.data[index].pictures);
 
-                preloader.preloadImages( imagesToPreload ).then(
+                preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
                         vm.articles = result.data;
                         galleryView.refresh();
