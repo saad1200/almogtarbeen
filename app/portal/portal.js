@@ -2,14 +2,15 @@
     'use strict';
     
     var controllerId = 'portal';
-    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'galleryView', 'preloaderImageService', portal]);
+    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'galleryView', 'preloaderImageService', 'broadcaster', portal]);
 
-    function portal(common, articlesService, categoriesService, galleryView, preloaderImageService) {
+    function portal(common, articlesService, categoriesService, galleryView, preloaderImageService, broadcaster) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var vm = this;
         vm.articles = [];
+        vm.articlesList = [];
         vm.slids = [];
         vm.categories = [];
         vm.pictures = ['http://malsup.github.com/images/beach1.jpg']
@@ -36,6 +37,8 @@
                 preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
                         vm.articles = result.data.slice(0,12);
+                        vm.articlesList = result.data.slice(24,30);
+                        broadcaster.updateArticlesViews(result.data.slice(12, 16))
                         galleryView.refresh();
                 });
                 
