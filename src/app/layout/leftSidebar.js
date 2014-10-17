@@ -1,29 +1,40 @@
 (function(){
+    'use strict'
 
-    angular.module('app').controller('leftSidebar', ['writersService', 'preloaderImageService', leftSideBar]);
+    angular.module('app').controller('leftSidebar', ['writersService', 'broadcaster', leftSideBar]);
 
-    function leftSideBar(writersService, preloaderImageService){
+    function leftSideBar(writersService, broadcaster){
 
         var vm = this;
-        vm.writers = [];
-        vm.writersArticles = [];
+//        vm.writers = [];
+//        vm.writersArticles = [];
+        vm.threeView = [];
+        vm.highlightView = [];
+        vm.listView = [];
 
         writersService.getLatest().success(function(results){
             vm.writers = results;
         });
 
-        writersService.getArticles().then(function (result) {
-            var imagesToPreload = [];
-            for(var index in result.data)
-                imagesToPreload.push(result.data[index].pictures);
-
-            preloaderImageService.preloadImages( imagesToPreload ).then(
-                function handleResolve( imageLocations ) {
-                    vm.writersArticles = result.data;
-                });
-
-            return vm.articles ;
+        broadcaster.onUpdateArticlesViews(function(event, data){
+            while (data.length > 0)
+                vm.threeView.push(data.splice(0, 4));
+//            vm.threeView.push(data);
+//            vm.highlightView = data.slice(15, 16);
+//            vm.listView = data.slice(15, 20);
         });
+//        writersService.getArticles().then(function (result) {
+//            var imagesToPreload = [];
+//            for(var index in result.data)
+//                imagesToPreload.push(result.data[index].pictures);
+//
+//            preloaderImageService.preloadImages( imagesToPreload ).then(
+//                function handleResolve( imageLocations ) {
+//                    vm.writersArticles = result.data;
+//                });
+//
+//            return vm.articles ;
+//        });
     }
 })();
 

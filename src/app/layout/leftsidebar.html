@@ -1,22 +1,71 @@
-<div class="col-md-3" data-ng-controller="leftSidebar as vm">
-    <div class="panel" id="midCol">
+<div class="col-md-6" data-ng-controller="leftSidebar as vm">
+
+    <div class="panel">
         <div class="panel-body">
 
-            <div class="well">
-                <h5 data-ng-repeat="writer in vm.writers"><a href="#"><i class="glyphicon glyphicon-user"></i> {{writer}}</a></h5>
-            </div>
-
-            <hr>
-
-            <div class="media" data-ng-repeat="article in vm.writersArticles">
-                <a class="pull-left" href="#">
-                    <img class="media-object" data-ng-src="{{article.pictures}}" style="width: 50px;height: 50px;">
-                </a>
-                <div class="media-body">
-                    <h5 class="media-heading"><a href="#/article/{{article.id}}"><strong>{{article.title}}</strong></a></h5>
+            <div data-ng-repeat="articles in vm.threeView">
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-md-8">
+                    <a href="#/article/{{articles[0].id}}"><img data-ng-src="{{articles[0].pictures}}" alt="{{articles[0].title}}" class="img-responsive"/></a>
+                    <h2>{{articles[0].title}}</h2>
+                    {{articles[0].content}}
+                </div>
+                <div class="col col-sm-4">
+                    <a href="#/article/{{articles[1].id}}"><img data-ng-src="{{articles[1].pictures}}" alt="{{articles[1].title}}" class="img-responsive"/></a>
+                    <h4>{{articles[1].title}}</h4>
+                    <hr>
+                    <a href="#/article/{{articles[2].id}}"><img data-ng-src="{{articles[2].pictures}}" alt="{{articles[2].title}}" class="img-responsive"/></a>
+                    <h4>{{articles[2].title}}</h4>
                 </div>
             </div>
+            <hr />
+                <!--<div class="well text-center">-->
+                    <!--<h2>{{articles[4].title}}</h2>-->
+                    <!--{{article.content}}-->
+                    <!--<br><br>-->
+                    <!--<div style="font-size:70pt">-->
+                        <!--<i class="glyphicon"><img data-ng-src="{{articles[4].pictures}}" alt="{{articles[4].title}}" class="img-responsive"/></i>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<hr>-->
+
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-md-6">
+                        <img data-ng-src="{{articles[3].pictures}}" alt="{{articles[3].title}}" class="img-responsive"/>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h3>{{articles[3].title}}</h3>
+                        {{articles[3].content}}
+                    </div>
+                </div>
+                <hr />
 
         </div>
-    </div><!--/panel-->
+
 </div><!--/end mid column-->
+
+
+<!--<div class="col-md-6" data-ng-controller="leftSidebar as vm">-->
+    <!--<div class="panel" id="midCol">-->
+        <!--<div class="panel-body">-->
+
+            <!--<div class="well">-->
+                <!--<h5 data-ng-repeat="writer in vm.writers"><a href="#"><i class="glyphicon glyphicon-user"></i> {{writer}}</a></h5>-->
+            <!--</div>-->
+
+            <!--<hr>-->
+
+            <!--<div class="media" data-ng-repeat="article in vm.writersArticles">-->
+                <!--<a class="pull-left" href="#">-->
+                    <!--<img class="media-object" data-ng-src="{{article.pictures}}" style="width: 50px;height: 50px;">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                    <!--<h5 class="media-heading"><a href="#/article/{{article.id}}"><strong>{{article.title}}</strong></a></h5>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>&lt;!&ndash;/panel&ndash;&gt;-->
+<!--</div>&lt;!&ndash;/end mid column&ndash;&gt;-->
