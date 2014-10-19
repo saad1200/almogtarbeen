@@ -1,72 +1,7 @@
-<section class="col-md-6" id="content" data-ng-controller="portal as vm" >
-
-<div class="cycle-slideshow" >
-
-    <a 
-       href="#/article/{{article.id}}" 
-       data-cycle-background="{{article.pictures}}"
-       data-cycle-caption1="{{article.title}}" 
-       data-ng-repeat='article in vm.articles'>
-    </a>
-    <div class="cycle-overlay"></div>
-    <div class="cycle-caption"></div>
-    <div class="cycle-pager"></div>
-    <div class="matrix"></div>
-    <div id="progress"></div>
+<div data-ng-controller="portal as vm" data-ng-show="vm.viewsGroups.length > 0">
+    <div class="row" data-ng-repeat="viewsGroup in vm.viewsGroups">
+        <div data-ng-repeat="view in viewsGroup">
+            <div data-ng-include="'app/portal/' + view.name + '.html'" data-ng-init="articles = view.articles"></div>
+        </div>
+    </div>
 </div>
-<div class="shadow"></div>
-<div id="adv-custom-pager" class="center external"></div>
-
-
-    <!--<div class="panel">-->
-        <!--<div class="panel-body">-->
-
-        <!--<div class="row">-->
-          <!--<div class="col-md-8">-->
-            <!--<a href="#/article/{{vm.articlesList[0].id}}"><img data-ng-src="{{vm.articlesList[0].pictures}}" alt="{{vm.articlesList[0].title}}" class="img-responsive"/></a>-->
-            <!--<h2>{{vm.articles[0].title}}</h2>-->
-            <!--{{vm.articles[0].content}}-->
-          <!--</div>-->
-          <!--<div class="col col-sm-4">-->
-            <!--<a href="#/article/{{vm.articlesList[1].id}}"><img data-ng-src="{{vm.articlesList[1].pictures}}" alt="{{vm.articlesList[1].title}}" class="img-responsive"/></a>-->
-            <!--<h4>{{vm.articles[1].title}}</h4>-->
-            <!--<hr>-->
-            <!--<a href="#/article/{{vm.articlesList[2].id}}"><img data-ng-src="{{vm.articlesList[2].pictures}}" alt="{{vm.articlesList[2].title}}" class="img-responsive"/></a>-->
-            <!--<h4>{{vm.articles[2].title}}</h4>-->
-          <!--</div>-->
-        <!--</div>-->
-    <!--<hr />-->
-    <!--<div class="panel-body">-->
-
-      <!--<div class="well text-center">-->
-        <!--<h2>{{vm.articles[3].title}}</h2>-->
-        <!--{{vm.articles[3].content}}-->
-        <!--<br><br>-->
-        <!--<div style="font-size:70pt">-->
-          <!--<i class="glyphicon"><img data-ng-src="{{vm.articles[3].pictures}}" alt="{{vm.articles[3].title}}" class="img-responsive"/></i>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<hr>-->
-
-        <!--<span data-ng-repeat='article in vm.articles' data-ng-show='$index > 3'>-->
-            <!--<hr>-->
-
-            <!--<div class="row">-->
-            <!--<div class="col-md-6">-->
-              <!--<img data-ng-src="{{vm.articles[$index].pictures}}" alt="{{vm.articles[$index].title}}" class="img-responsive"/>-->
-
-            <!--</div>-->
-            <!--<div class="col-md-6">-->
-              <!--<h3>{{vm.articles[$index].title}}</h3>-->
-                <!--{{vm.articles[$index].content}}-->
-            <!--</div>-->
-            <!--</div>-->
-
-        <!--</span>-->
-
-      <!--</div>-->
-
-            <!--/panel-body-->
-    <!--/end right column-->
-</section>
