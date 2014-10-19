@@ -2,22 +2,16 @@
     'use strict';
     
     var controllerId = 'portal';
-    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'galleryView', 'preloaderImageService', 'broadcaster', portal]);
+    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'preloaderImageService', 'articlesViewBuilder', portal]);
 
-    function portal(common, articlesService, categoriesService, galleryView, preloaderImageService, broadcaster) {
+    function portal(common, articlesService, categoriesService, preloaderImageService, articlesViewBuilder) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var vm = this;
-        vm.articles = [];
-        vm.articlesList = [];
-        vm.slids = [];
+        vm.viewsGroups = [];
         vm.categories = [];
-        vm.pictures = ['http://malsup.github.com/images/beach1.jpg']
-        vm.isLoading = true;
-        vm.isSuccessful = false;
-        vm.percentLoaded = 0;
-        
+
         activate();
 
         function activate() {
@@ -36,10 +30,7 @@
 
                 preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
-                        vm.articles = result.data.slice(0,12);
-                        vm.articlesList = result.data.slice(24,30);
-                        broadcaster.updateArticlesViews(result.data.slice(12, 16))
-                        galleryView.refresh();
+                        vm.viewsGroups = articlesViewBuilder.build(result.data);
                 });
                 
                 return vm.articles ;
@@ -52,23 +43,42 @@
                 return vm.categories ;
             });
         }
-        
-        function preloadImages(preloadImages){
-            preloader.preloadImages( preloadImages ).then(
-                function handleResolve( imageLocations ) {
-                    vm.isLoading = false;
-                    vm.isSuccessful = true;
-                },
-                function handleReject( imageLocation ) {
-                    vm.isLoading = false;
-                    vm.isSuccessful = false;
-                },
-                function handleNotify( event ) {
-                    vm.percentLoaded = event.percent;
-                }
-            );
-        }
     }
     
 })();
     
+(function(){
+    'use strict'
+    
+    angular.module('app').service('articlesViewBuilder',articlesViewBuilder);
+    
+    function articlesViewBuilder(){
+        this.build = function(data){
+            var viewsGroups = [];
+
+            viewsGroups.push([
+                buildThreeAndOneView(data.slice(6, 10)),
+                buildGalleryView(data.slice(0,6))
+            ]);
+            viewsGroups.push([
+                buildThreeAndOneView(data.slice(14, 18)),
+                buildThreeAndOneView(data.slice(18, 23))
+            ]);
+
+            console.log(viewsGroups);
+            return viewsGroups;
+        }
+
+        function buildGalleryView(articles){
+            return {name: 'galleryView', articles: articles}
+        }
+
+        function buildThreeAndOneView(articles){
+            var threeAndOneView = {name: 'threeAndOneView', articles: []};
+            while (articles.length > 0)
+                threeAndOneView.articles.push(articles.splice(0, 4));
+
+            return threeAndOneView;
+        }
+    }
+})();

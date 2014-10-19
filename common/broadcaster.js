@@ -11,7 +11,7 @@
         }
 
         function onUpdateArticlesViews(func){
-            $rootScope.$on(updateArticlesViewsName, func)
+            return $rootScope.$on(updateArticlesViewsName, func)
         }
 
         return {
