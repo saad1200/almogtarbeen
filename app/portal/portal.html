@@ -4,4 +4,16 @@
             <div data-ng-include="'app/portal/' + view.name + '.html'" data-ng-init="articles = view.articles"></div>
         </div>
     </div>
+
+    <div class="md-modal md-effect-12" id="articleModal">
+        <div class="md-content">
+            <h3>{{vm.selectedArticle.title}}</h3>
+            <div>
+                <p>{{vm.selectedArticle.content}}</p>
+                <button class="md-close">Close me!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="md-overlay"></div>
 </div>

@@ -26,7 +26,7 @@
         activate();
 
         function activate() {
-            logSuccess('Almogtarbeen loaded!', null, true);
+//            logSuccess('Almogtarbeen loaded!', null, true);
             common.activateController([], controllerId);
         }
 
