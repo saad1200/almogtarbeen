@@ -5,12 +5,13 @@
     angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'preloaderImageService', 'articlesViewBuilder', portal]);
 
     function portal(common, articlesService, categoriesService, preloaderImageService, articlesViewBuilder) {
-        var getLogFn = common.logger.getLogFn;
-        var log = getLogFn(controllerId);
+//        var getLogFn = common.logger.getLogFn;
+//        var log = getLogFn(controllerId);
 
         var vm = this;
         vm.viewsGroups = [];
         vm.categories = [];
+        vm.selectedArticle = {};
 
         activate();
 
@@ -18,7 +19,7 @@
             var promises = [getArticles(), getCategories()];
             common.activateController(promises, controllerId)
                 .then(function () { 
-                    log('Activated Dashboard View'); 
+//                    log('Activated Dashboard View');
             });
         }
 
@@ -43,6 +44,42 @@
                 return vm.categories ;
             });
         }
+
+        vm.showArticle = function(article){
+            vm.selectedArticle = article;
+            console.log(vm.selectedArticle.title);
+            var modal = document.querySelector( '#articleModal' ),
+                close = modal.querySelector( '.md-close'),
+                el = document.querySelector( '#article_' + article.id );
+
+            classie.add( modal, 'md-show' );
+            var overlay = document.querySelector( '.md-overlay' );
+            overlay.removeEventListener( 'click', removeModalHandler );
+            overlay.addEventListener( 'click', removeModalHandler );
+
+            function removeModal( hasPerspective ) {
+                classie.remove( modal, 'md-show' );
+
+                if( hasPerspective ) {
+                    classie.remove( document.documentElement, 'md-perspective' );
+                }
+            }
+
+            function removeModalHandler() {
+                removeModal( classie.has( el, 'md-setperspective' ) );
+            }
+
+            if( classie.has( el, 'md-setperspective' ) ) {
+                setTimeout( function() {
+                    classie.add( document.documentElement, 'md-perspective' );
+                }, 25 );
+            }
+
+            close.addEventListener( 'click', function( ev ) {
+                ev.stopPropagation();
+                removeModalHandler();
+            });
+        }
     }
     
 })();
@@ -65,7 +102,6 @@
                 buildThreeAndOneView(data.slice(18, 23))
             ]);
 
-            console.log(viewsGroups);
             return viewsGroups;
         }
 
