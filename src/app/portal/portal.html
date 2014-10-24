@@ -6,8 +6,9 @@
     </div>
 
     <div class="md-modal md-effect-12" id="articleModal">
-        <div class="md-content">
+        <div class="md-content" class="container">
             <h3>{{vm.selectedArticle.title}}</h3>
+            <img data-ng-src="{{vm.selectedArticle.pictures}}" alt="{{vm.selectedArticle.title}}" class="img-responsive thumbnail"/>
             <div>
                 <p>{{vm.selectedArticle.content}}</p>
                 <button class="md-close">Close me!</button>

@@ -66,6 +66,7 @@
             }
 
             function removeModalHandler() {
+                //console.log('dsafdsa');
                 removeModal( classie.has( el, 'md-setperspective' ) );
             }
 
