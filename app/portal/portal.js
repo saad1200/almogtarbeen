@@ -95,12 +95,12 @@
             var viewsGroups = [];
 
             viewsGroups.push([
-                buildThreeAndOneView(data.slice(6, 10)),
-                buildGalleryView(data.slice(0,6))
+                buildGalleryView(data.slice(0,6)),
+                buildThreeAndOneView(data.slice(6, 9)),
             ]);
             viewsGroups.push([
-                buildThreeAndOneView(data.slice(14, 18)),
-                buildThreeAndOneView(data.slice(18, 23))
+                buildThreeAndOneView(data.slice(9, 12)),
+                buildThreeAndOneView(data.slice(12, 15))
             ]);
 
             return viewsGroups;
@@ -113,7 +113,7 @@
         function buildThreeAndOneView(articles){
             var threeAndOneView = {name: 'threeAndOneView', articles: []};
             while (articles.length > 0)
-                threeAndOneView.articles.push(articles.splice(0, 4));
+                threeAndOneView.articles.push(articles.splice(0, 3));
 
             return threeAndOneView;
         }
