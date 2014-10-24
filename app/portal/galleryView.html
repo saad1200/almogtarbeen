@@ -1,8 +1,9 @@
 <section class="col-md-6">
-    <div class="cycle-slideshow " data-ng-controller="gallery">
+    <div class="cycle-slideshow" data-ng-controller="gallery">
 
         <a
-                href="#/article/{{article.id}}"
+                href id="article_{{article.id}}"
+                data-modal="modal-12" data-ng-click="vm.showArticle(article)"
                 data-cycle-background="{{article.pictures}}"
                 data-cycle-caption1="{{article.title}}"
                 data-ng-repeat='article in articles'>
@@ -13,6 +14,6 @@
         <div class="matrix"></div>
         <div id="progress"></div>
     </div>
-    <div class="shadow"></div>
+    <!--<div class="shadow"></div>-->
     <div id="adv-custom-pager" class="center external"></div>
 </section>

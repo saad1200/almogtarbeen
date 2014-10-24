@@ -2,20 +2,20 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 50%;
-    max-width: 630px;
-    min-width: 320px;
+    /*width: 50%;*/
+    /*max-width: 630px;*/
+    /*min-width: 320px;*/
     height: auto;
     z-index: 2000;
     visibility: hidden;
     backface-visibility: hidden;
     transform: translateX(-50%) translateY(-50%);
 }
- 
+
 .md-show {
     visibility: visible;
 }
- 
+
 .md-overlay {
     position: fixed;
     width: 100%;
@@ -28,7 +28,7 @@
     background: rgba(0,0,0,0.8);
     transition: all 0.3s;
 }
- 
+
 .md-show ~ .md-overlay {
     opacity: 1;
     visibility: visible;
@@ -47,12 +47,21 @@
 }
 
 .md-show.md-effect-12 ~ .md-overlay {
-	background: #e74c3c;
-} 
+	/*background: #e74c3c;*/
+}
 
-.md-effect-12 .md-content h3,
+.md-effect-12 .md-content h3{
+    font-size: 30px;
+}
+
 .md-effect-12 .md-content {
-	background: transparent;
+	/*background: transparent;*/
+    background: #FFFFFF;
+    padding: 50px;
+}
+
+.md-effect-12 .md-content h3{
+    padding: 10px;
 }
 
 .md-show.md-effect-12 .md-content {
