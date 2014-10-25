@@ -17,7 +17,10 @@
   "devDependencies": {
     "angular": "~1.2.24",
     "angular-route": "~1.2.24",
-    "angular-mocks": "~1.2.24"
+    "angular-mocks": "~1.2.24",
+    "angular-local-storage": "~0.1.3",
+    "jquery.cycle2.min": "https://raw.github.com/malsup/malsup.github.com/master/min/jquery.cycle2.min.js",
+    "html5shiv": "~3.7.2"
   },
   "dependencies": {
     "toastr": "~2.0.3",

@@ -6,6 +6,7 @@
     angular.module('app', [
         'ngRoute',
         'ngSanitize',
-        'common'
+        'common',
+        'LocalStorageModule'
     ]);
 }());

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                   branches: 60,
                   functions: 85,
                   lines: 90
-                },
+                }
             },
             unit: {
                 coverageReporter: {type: 'html', dir:'../coverage/'}
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             continuous: { 
                 singleRun: true,
                 browsers: ['PhantomJS'],
-                coverageReporter: {type: 'lcov', dir:'../coverage/'},
+                coverageReporter: {type: 'lcov', dir:'../coverage/'}
             }
         },
         
@@ -46,13 +46,35 @@ module.exports = function(grunt) {
             updateLocalWebdriver: { command: './node_modules/protractor/bin/webdriver-manager update' },
             updateCiWebdriver: { command: './node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update' },
             startJekyll: { command: 'jekyll serve --watch' },
-            updatepackages: { command: 'npm-check-updates -u' },
+            updatepackages: { command: 'npm-check-updates -u' }
         },
         
         coveralls: {
             src: 'coverage/**/lcov.info',
             options: { force: false }
         },
+
+        connect: {
+            dev: {
+                options: {
+                    port: 4000,
+                    base: 'src',
+                    keepalive: true
+                }
+            },
+            offline: {
+                options: {
+                    port: 4001,
+                    base: 'offline',
+                    keepalive: true,
+                    middleware: [
+                        function myMiddleware(req, res, next) {
+                            res.end('Hello, world!');
+                        }
+                    ]
+                }
+            }
+        }
         
     });
         
@@ -61,9 +83,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jslint');
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-coveralls');
-    
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
     grunt.registerTask('lint', ['jslint']);
-    grunt.registerTask('start.server', ['shell:startJekyll']);
+    //grunt.registerTask('start.server', ['shell:startJekyll']);
+    grunt.registerTask('start.server', ['connect:dev']);
+    grunt.registerTask('start.offline', ['connect:offline']);
     grunt.registerTask('acceptance', ['shell:updateLocalWebdriver', 'protractor:local']);
     grunt.registerTask('acceptance-ci', ['protractor:ci']);
     grunt.registerTask('acceptance-cucumber', ['protractor:cucumber']);

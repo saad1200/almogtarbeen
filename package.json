@@ -23,7 +23,9 @@
     "grunt-shell": "^1.1.1",
     "grunt-jslint": "^1.1.12",
     "cucumber": "^0.4.4",
-    "should": "^4.0.4"
+    "should": "^4.0.4",
+    "connect": "^3.3.1",
+    "grunt-contrib-connect": "^0.8.0"
   },
   "scripts": {},
   "author": "",
