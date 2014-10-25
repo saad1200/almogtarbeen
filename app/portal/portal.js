@@ -33,7 +33,7 @@
                     function handleResolve( imageLocations ) {
                         vm.viewsGroups = articlesViewBuilder.build(result.data);
                 });
-                
+
                 return vm.articles ;
             });
         }
