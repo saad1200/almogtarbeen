@@ -7,11 +7,12 @@
 
     <div class="md-modal md-effect-12" id="articleModal">
         <div class="md-content" class="container">
-            <h3>{{vm.selectedArticle.title}}</h3>
-            <img data-ng-src="{{vm.selectedArticle.pictures}}" alt="{{vm.selectedArticle.title}}" class="img-responsive thumbnail"/>
+            <button type="button" class="md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>{{vm.selectedArticle.formattedTitle}}</h3>
+            <img data-ng-show="vm.selectedArticle.pictures.length > 0" data-ng-src="{{vm.selectedArticle.pictures[0]}}" alt="{{vm.selectedArticle.title}}" class="img-responsive thumbnail"/>
             <div>
                 <p>{{vm.selectedArticle.content}}</p>
-                <button class="md-close">Close me!</button>
+                <!--<button class="md-close">Close me!</button>-->
             </div>
         </div>
     </div>

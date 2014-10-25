@@ -2,9 +2,9 @@
     'use strict';
     
     var controllerId = 'portal';
-    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'preloaderImageService', 'articlesViewBuilder', portal]);
+    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'preloaderImageService', 'articlesViewBuilder', 'articleModal', 'spinner', portal]);
 
-    function portal(common, articlesService, categoriesService, preloaderImageService, articlesViewBuilder) {
+    function portal(common, articlesService, categoriesService, preloaderImageService, articlesViewBuilder, articleModal, spinner) {
 //        var getLogFn = common.logger.getLogFn;
 //        var log = getLogFn(controllerId);
 
@@ -18,20 +18,22 @@
         function activate() {
             var promises = [getArticles(), getCategories()];
             common.activateController(promises, controllerId)
-                .then(function () { 
+                .then(function () {
 //                    log('Activated Dashboard View');
             });
         }
 
         function getArticles() {
             return articlesService.getLatest().then(function (result) {
+                vm.viewsGroups = articlesViewBuilder.build(result.data);
                 var imagesToPreload = [];
+
                 for(var index in result.data)
                     imagesToPreload.push(result.data[index].pictures);
 
                 preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
-                        vm.viewsGroups = articlesViewBuilder.build(result.data);
+                        //vm.viewsGroups = articlesViewBuilder.build(result.data);
                 });
 
                 return vm.articles ;
@@ -45,44 +47,77 @@
             });
         }
 
-        vm.showArticle = function(article){
-            vm.selectedArticle = article;
-            console.log(vm.selectedArticle.title);
-            var modal = document.querySelector( '#articleModal' ),
-                close = modal.querySelector( '.md-close'),
-                el = document.querySelector( '#article_' + article.id );
-
-            classie.add( modal, 'md-show' );
-            var overlay = document.querySelector( '.md-overlay' );
-            overlay.removeEventListener( 'click', removeModalHandler );
-            overlay.addEventListener( 'click', removeModalHandler );
-
-            function removeModal( hasPerspective ) {
-                classie.remove( modal, 'md-show' );
-
-                if( hasPerspective ) {
-                    classie.remove( document.documentElement, 'md-perspective' );
-                }
-            }
-
-            function removeModalHandler() {
-                //console.log('dsafdsa');
-                removeModal( classie.has( el, 'md-setperspective' ) );
-            }
-
-            if( classie.has( el, 'md-setperspective' ) ) {
-                setTimeout( function() {
-                    classie.add( document.documentElement, 'md-perspective' );
-                }, 25 );
-            }
-
-            close.addEventListener( 'click', function( ev ) {
-                ev.stopPropagation();
-                removeModalHandler();
+        vm.showArticle = function(id){
+            spinner.spinnerShow();
+            articlesService.get(id).success(function(article){
+                vm.selectedArticle = article;
+                articleModal.show(article);
+                spinner.spinnerHide();
             });
         }
     }
     
+})();
+
+(function(){
+    'use strict'
+
+    angular.module('app').service('articleModal', articleModal);
+
+    function articleModal(){
+
+        function getMessage(article){
+            var message = '<h3>' + article.formattedTitle + '</h3>';
+
+            if(article.pictures.length > 0)
+            {
+                message += '<img src="' + article.pictures[0] + '" alt="' + article.title + '" class="img-responsive thumbnail"/>';
+            }
+
+            message += '<div> <p>"' + article.content + '</p></div>';
+
+            return message;
+        }
+
+        this.show = function(article){
+            bootbox.dialog({
+                onEscape: true,
+                animate: true,
+                message: getMessage(article)
+            });
+            //var modal = document.querySelector( '#articleModal' ),
+            //    close = modal.querySelector( '.md-close'),
+            //    el = document.querySelector( '#article_' + id );
+            //
+            //classie.add( modal, 'md-show' );
+            //var overlay = document.querySelector( '.md-overlay' );
+            //overlay.removeEventListener( 'click', removeModalHandler );
+            //overlay.addEventListener( 'click', removeModalHandler );
+            //
+            //function removeModal( hasPerspective ) {
+            //    classie.remove( modal, 'md-show' );
+            //
+            //    if( hasPerspective ) {
+            //        classie.remove( document.documentElement, 'md-perspective' );
+            //    }
+            //}
+            //
+            //function removeModalHandler() {
+            //    removeModal( classie.has( el, 'md-setperspective' ) );
+            //}
+            //
+            //if( classie.has( el, 'md-setperspective' ) ) {
+            //    setTimeout( function() {
+            //        classie.add( document.documentElement, 'md-perspective' );
+            //    }, 25 );
+            //}
+            //
+            //close.addEventListener( 'click', function( ev ) {
+            //    ev.stopPropagation();
+            //    removeModalHandler();
+            //});
+        }
+    }
 })();
     
 (function(){
