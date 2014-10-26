@@ -74,7 +74,7 @@
                 message += '<img src="' + article.pictures[0] + '" alt="' + article.title + '" class="img-responsive thumbnail"/>';
             }
 
-            message += '<div> <p>"' + article.content + '</p></div>';
+            message += '<div> <p class="newspaper">' + article.content + '</p></div>';
 
             return message;
         }
@@ -83,39 +83,13 @@
             bootbox.dialog({
                 onEscape: true,
                 animate: true,
-                message: getMessage(article)
+                message: getMessage(article),
             });
-            //var modal = document.querySelector( '#articleModal' ),
-            //    close = modal.querySelector( '.md-close'),
-            //    el = document.querySelector( '#article_' + id );
-            //
-            //classie.add( modal, 'md-show' );
-            //var overlay = document.querySelector( '.md-overlay' );
-            //overlay.removeEventListener( 'click', removeModalHandler );
-            //overlay.addEventListener( 'click', removeModalHandler );
-            //
-            //function removeModal( hasPerspective ) {
-            //    classie.remove( modal, 'md-show' );
-            //
-            //    if( hasPerspective ) {
-            //        classie.remove( document.documentElement, 'md-perspective' );
-            //    }
-            //}
-            //
-            //function removeModalHandler() {
-            //    removeModal( classie.has( el, 'md-setperspective' ) );
-            //}
-            //
-            //if( classie.has( el, 'md-setperspective' ) ) {
-            //    setTimeout( function() {
-            //        classie.add( document.documentElement, 'md-perspective' );
-            //    }, 25 );
-            //}
-            //
-            //close.addEventListener( 'click', function( ev ) {
-            //    ev.stopPropagation();
-            //    removeModalHandler();
-            //});
+
+            $(".bootbox").click(function(ev){
+                if(ev.target != this) return;
+                $('.bootbox').modal('hide');
+            });
         }
     }
 })();
