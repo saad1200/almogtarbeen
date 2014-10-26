@@ -17,8 +17,17 @@
 
         function activate() {
 
+            articleModal.close();
+            var promises = [getArticles(), getCategories()];
             var id = $routeParams.id || null;
-            var promises = [getArticles(), getCategories(), getArticle(id)];
+            if(id !== null){
+                promises.push(getArticle(id));
+            }
+            var code = $routeParams.code || null;
+            if(code !== null){
+                console.log(code);
+                //promises.push(getArticle(id));
+            }
             common.activateController(promises, controllerId)
                 .then(function () {
                     //log('Activated Dashboard View');
@@ -76,6 +85,11 @@
 
     function articleModal(){
 
+        var self = this;
+        this.close = function(){
+            $('.bootbox').modal('hide');
+        }
+
         function getMessage(article){
             var message = '<h3>' + article.formattedTitle + '</h3>';
 
@@ -98,7 +112,7 @@
 
             $(".bootbox").click(function(ev){
                 if(ev.target != this) return;
-                $('.bootbox').modal('hide');
+                self.close();
             });
         }
     }
@@ -110,12 +124,13 @@
     angular.module('app').service('articlesViewBuilder',articlesViewBuilder);
     
     function articlesViewBuilder(){
+        var hasMenue = true;
         this.build = function(data){
             var viewsGroups = [];
 
             viewsGroups.push([
                 buildGalleryView(data.slice(0,6)),
-                buildThreeAndOneView(data.slice(6, 9)),
+                buildThreeAndOneView(data.slice(6, 9), hasMenue),
             ]);
             viewsGroups.push([
                 buildThreeAndOneView(data.slice(9, 12)),
@@ -129,8 +144,8 @@
             return {name: 'galleryView', articles: articles}
         }
 
-        function buildThreeAndOneView(articles){
-            var threeAndOneView = {name: 'threeAndOneView', articles: []};
+        function buildThreeAndOneView(articles, hasMenue){
+            var threeAndOneView = {name: 'threeAndOneView', articles: [], hasMenue: hasMenue};
             while (articles.length > 0)
                 threeAndOneView.articles.push(articles.splice(0, 3));
 
