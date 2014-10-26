@@ -18,15 +18,16 @@
         function activate() {
 
             articleModal.close();
-            var promises = [getArticles(), getCategories()];
+            var promises = [getCategories()];
             var id = $routeParams.id || null;
             if(id !== null){
                 promises.push(getArticle(id));
             }
             var code = $routeParams.code || null;
             if(code !== null){
-                console.log(code);
-                //promises.push(getArticle(id));
+                promises.push(getByCountryCode(code));
+            }else{
+                promises.push(getArticles());
             }
             common.activateController(promises, controllerId)
                 .then(function () {
@@ -41,8 +42,16 @@
             });
         }
 
+        function getByCountryCode(code){
+            return getArticlesByPromise(articlesService.getByCountryCode(code));
+        }
+
         function getArticles() {
-            return articlesService.getLatest().then(function (result) {
+            return getArticlesByPromise(articlesService.getLatest());
+        }
+
+        function getArticlesByPromise(promise){
+            return promise.then(function (result) {
                 var imagesToPreload = [];
 
                 for(var index in result.data)
@@ -51,7 +60,7 @@
                 preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
                         vm.viewsGroups = articlesViewBuilder.build(result.data);
-                });
+                    });
 
                 return vm.articles ;
             });
