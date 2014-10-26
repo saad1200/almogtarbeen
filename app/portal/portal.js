@@ -2,9 +2,9 @@
     'use strict';
     
     var controllerId = 'portal';
-    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'preloaderImageService', 'articlesViewBuilder', 'articleModal', 'spinner', portal]);
+    angular.module('app').controller(controllerId, ['common', 'articlesService', 'categoriesService', 'preloaderImageService', 'articlesViewBuilder', 'articleModal','$routeParams', portal]);
 
-    function portal(common, articlesService, categoriesService, preloaderImageService, articlesViewBuilder, articleModal, spinner) {
+    function portal(common, articlesService, categoriesService, preloaderImageService, articlesViewBuilder, articleModal,$routeParams) {
 //        var getLogFn = common.logger.getLogFn;
 //        var log = getLogFn(controllerId);
 
@@ -16,16 +16,24 @@
         activate();
 
         function activate() {
-            var promises = [getArticles(), getCategories()];
+
+            var id = $routeParams.id || null;
+            var promises = [getArticles(), getCategories(), getArticle(id)];
             common.activateController(promises, controllerId)
                 .then(function () {
-//                    log('Activated Dashboard View');
+                    //log('Activated Dashboard View');
+            });
+        }
+
+        function getArticle(id){
+            articlesService.get(id).success(function(article){
+                vm.selectedArticle = article;
+                articleModal.show(article);
             });
         }
 
         function getArticles() {
             return articlesService.getLatest().then(function (result) {
-                vm.viewsGroups = articlesViewBuilder.build(result.data);
                 var imagesToPreload = [];
 
                 for(var index in result.data)
@@ -33,7 +41,7 @@
 
                 preloaderImageService.preloadImages( imagesToPreload ).then(
                     function handleResolve( imageLocations ) {
-                        //vm.viewsGroups = articlesViewBuilder.build(result.data);
+                        vm.viewsGroups = articlesViewBuilder.build(result.data);
                 });
 
                 return vm.articles ;
@@ -48,12 +56,14 @@
         }
 
         vm.showArticle = function(id){
-            spinner.spinnerShow();
-            articlesService.get(id).success(function(article){
-                vm.selectedArticle = article;
-                articleModal.show(article);
-                spinner.spinnerHide();
-            });
+            console.log(vm.selectedArticle);
+            if(vm.selectedArticle && vm.selectedArticle.id === id)
+            {
+                articlesService.get(id).success(function(article){
+                    vm.selectedArticle = article;
+                    articleModal.show(article);
+                });
+            }
         }
     }
     
@@ -83,7 +93,7 @@
             bootbox.dialog({
                 onEscape: true,
                 animate: true,
-                message: getMessage(article),
+                message: getMessage(article)
             });
 
             $(".bootbox").click(function(ev){

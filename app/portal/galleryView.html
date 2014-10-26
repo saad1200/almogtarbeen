@@ -2,7 +2,8 @@
     <div class="cycle-slideshow" data-ng-controller="gallery">
 
         <a
-                href id="article_{{article.id}}"
+                data-ng-href='#{{article.id}}'
+                id="article_{{article.id}}"
                 data-modal="modal-12" data-ng-click="vm.showArticle(article.id)"
                 data-cycle-background="{{article.pictures}}"
                 data-cycle-caption1="{{article.title}}"
