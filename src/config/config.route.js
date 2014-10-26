@@ -24,7 +24,7 @@
     function getRoutes() {
         return [
             {
-                url: '/',
+                url: '/:id?',
                 config: {
                     templateUrl: 'app/portal/portal.html',
                     title: 'portal',
