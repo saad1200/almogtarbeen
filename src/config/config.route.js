@@ -24,14 +24,21 @@
     function getRoutes() {
         return [
             {
-                url: '/country/:code',
+                url: '/',
                 config: {
                     templateUrl: 'app/portal/portal.html',
                     title: 'portal',
                     settings: {}
                 }
             }, {
-                url: '/:id?',
+                url: '/country/:code/:id?',
+                config: {
+                    templateUrl: 'app/portal/portal.html',
+                    title: 'portal',
+                    settings: {}
+                }
+            }, {
+                url: '/articles/:id?',
                 config: {
                     templateUrl: 'app/portal/portal.html',
                     title: 'portal',

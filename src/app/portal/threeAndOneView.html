@@ -4,21 +4,21 @@
             <div class="article" data-ng-repeat="articles in articles">
                 <div class="row">
                     <div class="col-md-8 box">
-                        <a data-ng-href='#{{articles[0].id}}' data-ng-click="vm.showArticle(articles[0].id)" id="article_{{articles[0].id}}" data-modal="modal-12" >
+                        <a data-ng-href='#{{vm.suburl}}/{{articles[0].id}}' data-ng-click="vm.showArticle(articles[0].id)" id="article_{{articles[0].id}}" data-modal="modal-12" >
                             <img data-ng-src="{{articles[0].pictures}}" alt="{{articles[0].title}}" class="img-responsive thumbnail"/>
                         </a>
-                        <a data-ng-href='#{{articles[0].id}}' data-ng-click="vm.showArticle(articles[0].id)" data-modal="modal-12"><h3>{{articles[0].title}}</h3></a>
+                        <a data-ng-href='#{{vm.suburl}}/{{articles[0].id}}' data-ng-click="vm.showArticle(articles[0].id)" data-modal="modal-12"><h3>{{articles[0].title}}</h3></a>
                         <p>{{articles[0].content}}</p>
                     </div>
                     <div class="col-md-4 box">
-                        <a data-ng-href='#{{articles[1].id}}' data-ng-click="vm.showArticle(articles[1].id)" id="article_{{articles[1].id}}" data-modal="modal-12">
+                        <a data-ng-href='#{{vm.suburl}}/{{articles[1].id}}' data-ng-click="vm.showArticle(articles[1].id)" id="article_{{articles[1].id}}" data-modal="modal-12">
                             <img data-ng-src="{{articles[1].pictures}}" alt="{{articles[1].title}}" class="img-responsive thumbnail"/>
                         </a>
-                        <a data-ng-href='#{{articles[1].id}}' data-ng-click="vm.showArticle(articles[1].id)" data-modal="modal-12"><h3>{{articles[1].title}}</h3></a>
-                        <a data-ng-href='#{{articles[2].id}}' data-ng-click="vm.showArticle(articles[2].id)" id="article_{{articles[2].id}}" data-modal="modal-12">
+                        <a data-ng-href='#{{vm.suburl}}/{{articles[1].id}}' data-ng-click="vm.showArticle(articles[1].id)" data-modal="modal-12"><h3>{{articles[1].title}}</h3></a>
+                        <a data-ng-href='#{{vm.suburl}}/{{articles[2].id}}' data-ng-click="vm.showArticle(articles[2].id)" id="article_{{articles[2].id}}" data-modal="modal-12">
                             <img data-ng-src="{{articles[2].pictures}}"  alt="{{articles[2].title}}" class="img-responsive thumbnail"/>
                         </a>
-                        <a data-ng-href='#{{articles[2].id}}' data-modal="modal-12" data-ng-click="vm.showArticle(articles[2].id)"><h3>{{articles[2].title}}</h3></a>
+                        <a data-ng-href='#{{vm.suburl}}/{{articles[2].id}}' data-modal="modal-12" data-ng-click="vm.showArticle(articles[2].id)"><h3>{{articles[2].title}}</h3></a>
                     </div>
                 </div>
                 <!--<hr/>-->

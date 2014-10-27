@@ -17,6 +17,10 @@
         this.get = function(id){
             return $http.get('http://www.almogtarbeen.com/article/get/' + id);
         }
+
+        this.getArticleByCountryCode = function(id, code){
+            return $http.get('http://www.almogtarbeen.com/article/getByCountryCode/' + id + '/?code=' + code);
+        }
     }
 
 })();
