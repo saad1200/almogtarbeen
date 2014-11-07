@@ -199,4 +199,11 @@
             attrs.$set('class', 'widget-head');
         }
     });
+
+    app.directive('newScope', function() {
+        return {
+            scope: true,
+            priority: 450
+        };
+    });
 })();

@@ -1,20 +1,94 @@
-<section class="col-md-6">
-    <div class="cycle-slideshow" data-ng-controller="gallery">
+<div class="section row entries bg-primary section-no-margin-bottom">
 
-        <a
-                data-ng-href='#{{vm.suburl}}/{{article.id}}'
-                id="article_{{article.id}}"
-                data-modal="modal-12" data-ng-click="vm.showArticle(article.id)"
-                data-cycle-background="{{article.pictures}}"
-                data-cycle-caption1="{{article.title}}"
-                data-ng-repeat='article in articles'>
-        </a>
-        <div class="cycle-overlay"></div>
-        <div class="cycle-caption"></div>
-        <div class="cycle-pager"></div>
-        <div class="matrix"></div>
-        <div id="progress"></div>
+    <div class="col-lg-6 col-xl-5">
+
+        <div class="row">
+
+            <article class="entry style-grid style-hero hero-md-largest type-post col-md-8 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'" data-ng-init="article = articles[0]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[1]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[2]"></div>
+
+            </article>
+
+        </div><!--/.row-->
+
     </div>
-    <!--<div class="shadow"></div>-->
-    <div id="adv-custom-pager" class="center external"></div>
-</section>
+
+    <div class="col-lg-6 col-xl-7">
+
+        <div class="row">
+
+            <article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[3]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[4]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[5]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-6 col-lg-6 colheight-sm-1">
+
+                <div data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[6]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-6 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'"  data-ng-init="article = articles[7]"></div>
+
+            </article>
+
+            <article class="entry style-grid style-hero type-post col-md-6 col-lg-6 colheight-sm-1">
+
+                <div data-new-scope data-ng-include="'app/portal/galleryArticle.html'" data-ng-init="article = articles[8]"></div>
+
+            </article>
+
+        </div><!--/.row-->
+
+    </div>
+
+</div><!--/section.row.entries-->
+
+<!--<section class="col-md-6">-->
+    <!--<div class="cycle-slideshow" data-ng-controller="gallery">-->
+
+        <!--<a-->
+                <!--data-ng-href='#{{vm.suburl}}/{{article.id}}'-->
+                <!--id="article_{{article.id}}"-->
+                <!--data-modal="modal-12" data-ng-click="vm.showArticle(article.id)"-->
+                <!--data-cycle-background="{{article.pictures}}"-->
+                <!--data-cycle-caption1="{{article.title}}"-->
+                <!--data-ng-repeat='article in articles'>-->
+        <!--</a>-->
+        <!--<div class="cycle-overlay"></div>-->
+        <!--<div class="cycle-caption"></div>-->
+        <!--<div class="cycle-pager"></div>-->
+        <!--<div class="matrix"></div>-->
+        <!--<div id="progress"></div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="shadow"></div>&ndash;&gt;-->
+    <!--<div id="adv-custom-pager" class="center external"></div>-->
+<!--</section>-->
