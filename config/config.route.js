@@ -38,9 +38,9 @@
                     settings: {}
                 }
             }, {
-                url: '/articles/:id?',
+                url: '/articles/:id',
                 config: {
-                    templateUrl: 'app/portal/portal.html',
+                    templateUrl: 'app/portal/article.html',
                     title: 'portal',
                     settings: {}
                 }

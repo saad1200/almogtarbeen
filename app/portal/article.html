@@ -1,0 +1,23 @@
+<div data-ng-controller="article as vm" data-ng-show="vm.articles.length > 0" class="row">
+    <div class="col-md-3 box article">
+        <div data-ng-repeat="article in vm.articles">
+            <a data-ng-href='#{{vm.suburl}}/{{article.id}}'>
+                <img data-ng-src="{{article.pictures}}" alt="{{article.title}}" class="img-responsive thumbnail"/>
+            </a>
+            <a data-ng-href='#{{vm.suburl}}/{{article.id}}'><h3>{{article.title}}</h3></a>
+        </div>
+    </div>
+    <div class="col-md-6 box" id="content">
+        <h2>{{vm.selectedArticle.title}}</h2>
+        <img src="{{vm.selectedArticle.pictures}}" alt="{{vm.selectedArticle.title}}" class="img-responsive thumbnail"/>
+        <div> <p class="newspaper" >{{vm.selectedArticle.content}}</p></div>
+    </div>
+    <div class="col-md-3 box article">
+        <div data-ng-repeat="article in vm.articles">
+            <a data-ng-href='#{{vm.suburl}}/{{article.id}}'>
+                <img data-ng-src="{{article.pictures}}" alt="{{article.title}}" class="img-responsive thumbnail"/>
+            </a>
+            <a data-ng-href='#{{vm.suburl}}/{{article.id}}'><h3>{{article.title}}</h3></a>
+        </div>
+    </div>
+</div>

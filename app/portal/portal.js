@@ -12,7 +12,7 @@
         vm.viewsGroups = [];
         vm.categories = [];
         vm.selectedArticle = {};
-        vm.suburl = 'articles'
+        vm.suburl = 'articles';
 
         activate();
 
@@ -150,8 +150,11 @@
             var viewsGroups = [];
 
             viewsGroups.push([
-                buildGalleryView(data.slice(0,6)),
-                buildThreeAndOneView(data.slice(6, 9), hasMenue),
+                buildGalleryView(data.slice(0,9)),
+            ]);
+            viewsGroups.push([
+                buildThreeAndOneView(data.slice(6, 9)),
+                buildThreeAndOneView(data.slice(6, 9))
             ]);
             viewsGroups.push([
                 buildThreeAndOneView(data.slice(9, 12)),
