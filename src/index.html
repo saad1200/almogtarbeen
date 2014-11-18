@@ -1,98 +1,90 @@
 <!DOCTYPE html>
-<html id="ng-app" data-ng-app="app">
+<html id="ng-app" data-ng-app="app" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]-->
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
     <title>Almogtarbeen</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="bower_components/toastr/toastr.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>Summarize - Responsive Blog/Magazine</title>
+    <meta name="description" content="">
+
+    <!-- Mobile Devices Viewport Resset-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
     <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="http://surgd.com/cycle2/animate.css" rel="stylesheet" />
-
-    <!--[if lt IE 9]>
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--<!--[if lt IE 9]>-->
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!--<![endif]-->
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400"/>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans"/>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster"/>
-    <link rel="stylesheet" href="prettyPhoto/css/prettyPhoto.css" />
+    <link rel="stylesheet" href="css/prettyPhoto.css">
+
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/slideshow.css" />
-    <link rel="stylesheet" href="http://www.almogtarbeen.com/combres.axd/siteCss/-2145685977/" />
+    <link rel="stylesheet" href="css/base.css" />
 
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link href="bower_components/toastr/toastr.css" rel="stylesheet" />
 
+    <!--<!-- CSS -->
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400"/>-->
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans"/>-->
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster"/>-->
 
+    <link rel="stylesheet" href="css/style.css" />
+    <!--<link rel="stylesheet" href="css/slideshow.css" />-->
+    <!--<link rel="stylesheet" href="http://www.almogtarbeen.com/combres.axd/siteCss/-2145685977/" />-->
 
-
-    <link rel="stylesheet" href="http://html.coolorize.com/summarize/vendor/prettyPhoto/css/prettyPhoto.css">
-
-    <!-- base layout styling -->
-    <link rel="stylesheet" href="http://html.coolorize.com/summarize/css/base.css">
-
-    <!-- components styling -->
-    <link rel="stylesheet" href="http://html.coolorize.com/summarize/css/components.css">
-
-    <!-- template colorschemes -->
-    <link rel="stylesheet" href="http://html.coolorize.com/summarize/colorschemes/default.css">
-
-
-
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
-    <![endif]-->
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <!--<link rel="shortcut icon" href="assets/ico/favicon.ico" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>-->
+    <!--<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>-->
 </head>
-<body style="direction:rtl">
+<body class="body">
 
-
-    <div class="container-fluid">
-        <div class="col-md-1 visible-lg visible-md"></div>
-        <div class="content row col-md-10 col-sm-12">
-            <div class="row">
-                <div class="col-md-12 pull-right" data-ng-show="view.hasMenue == true" data-ng-controller="navbar as navbarvm">
-                    <ul class="nav nav-pills">
-                        <li>
-                            <a href="#/">عالمية</a>
-                        </li>
-                        <li>
-                            <a href="#/country/962">الأردن</a>
-                        </li>
-                    </ul>
-                </div>
+    <div data-ng-include="'app/layout/header.html'"></div>
+        <div id="main" class="container">
+            <div class="col-md-1 visible-lg visible-md"></div>
+            <div class="content row col-md-10 col-sm-12">
+                <!--<div class="row">-->
+                    <!--<div class="col-md-12 pull-right" data-ng-show="view.hasMenue == true" >-->
+                        <!--<ul class="nav nav-pills">-->
+                            <!--<li>-->
+                                <!--<a href="#/">عالمية</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="#/country/962">الأردن</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="content" data-ng-include="'app/layout/shell.html'"></div>
             </div>
-            <!--<div data-ng-include="'app/layout/header.html'"></div>-->
-            <div data-ng-include="'app/layout/shell.html'"></div>
-            <div data-ng-include="'app/layout/footer.html'"></div>
+            <div class="col-md-1 visible-lg visible-md"></div>
         </div>
-        <div class="col-md-1 visible-lg visible-md"></div>
     </div>
 
-    <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/jquery.cycle2.min/index.js"></script>
-    <script src="http://meetselva.github.io/attrchange/javascripts/attrchange.js"></script>
-    <!--<script src="http://malsup.github.io/jquery.cycle2.js"></script>-->
-    <script src="bower_components/jquery.easing/js/jquery.easing.min.js"></script>
-    <!--<script src="http://malsup.github.io/jquery.cycle2.tile.js"></script>-->
-    <script src="bower_components/underscore/underscore-min.js"></script>
-    <script src="bower_components/toastr/toastr.js"></script>
-    <script src="bower_components/spin.js/spin.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/bootbox/bootbox.js"></script>
-    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://meetselva.github.io/attrchange/javascripts/attrchange.js"></script>
+    <script type="text/javascript" src="bower_components/jquery.easing/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="bower_components/toastr/toastr.js"></script>
+    <script type="text/javascript" src="bower_components/spin.js/spin.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootbox/bootbox.js"></script>
+    <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script type="text/javascript" href="bower_components/modernizr/modernizr.js" ></script>
 
     <script src="js/classie.js"></script>
 
@@ -109,7 +101,7 @@
     <script type="text/javascript" src="app/layout/shell.js"></script>
     <script type="text/javascript" src="app/layout/leftSidebar.js"></script>
     <script type="text/javascript" src="app/layout/rightSidebar.js"></script>
-    <script type="text/javascript" src="app/layout/navbar.js"></script>
+    <script type="text/javascript" src="app/layout/header.js"></script>
 
     <!-- app -->
     <script type="text/javascript" src="app/portal/portal.js"></script>
@@ -121,6 +113,10 @@
     <script type="text/javascript" src="service/articlesService.js"></script>
     <script type="text/javascript" src="service/categoriesService.js"></script>
     <script type="text/javascript" src="service/galleryView.js"></script>
+
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>-->
 
 </body>
 </html>
