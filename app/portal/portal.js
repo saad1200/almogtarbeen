@@ -36,7 +36,6 @@
             }
             common.activateController(promises, controllerId)
                 .then(function () {
-                    //log('Activated Dashboard View');
             });
         }
 
@@ -145,7 +144,6 @@
     angular.module('app').service('articlesViewBuilder',articlesViewBuilder);
     
     function articlesViewBuilder(){
-        var hasMenue = true;
         this.build = function(data){
             var viewsGroups = [];
 
@@ -153,12 +151,15 @@
                 buildGalleryView(data.slice(0,9)),
             ]);
             viewsGroups.push([
-                buildThreeAndOneView(data.slice(6, 9)),
-                buildThreeAndOneView(data.slice(6, 9))
-            ]);
-            viewsGroups.push([
                 buildThreeAndOneView(data.slice(9, 12)),
                 buildThreeAndOneView(data.slice(12, 15))
+            ]);
+            viewsGroups.push([
+                buildThreeAndOneView(data.slice(15, 18)),
+                buildThreeAndOneView(data.slice(18, 21))
+            ]);
+            viewsGroups.push([
+                buildGalleryView(data.slice(21,31)),
             ]);
 
             return viewsGroups;
